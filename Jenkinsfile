@@ -8,13 +8,11 @@ pipeline {
         }
         stage('Test') { 
             when {
-                expression {
-                    env.BRANCH_NAME = 'dev'
-                    echo "The build is running on the branch: ${env.BRANCH_NAME}
-                }
+                expression { env.BRANCH_NAME == 'dev' }
             }
             steps {
-                echo 'testing the app' 
+                echo "The build is running on the branch: ${env.BRANCH_NAME}"
+                echo 'Testing the app' 
             }
         }
         stage('Deploy') { 
