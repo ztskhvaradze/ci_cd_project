@@ -10,6 +10,7 @@ pipeline {
             when {
                 expression {
                     BRANCH_NAME = 'dev'
+                    echo "The build is running on the branch: BRANCH_NAME
                 }
             }
             steps {
