@@ -1,5 +1,5 @@
 import pytest
-import pyodbc
+import pymssql
 
 # Server and user information
 MSSQL_SERVER = "EPGETBIW052E\\SQLEXPRESS"
@@ -7,26 +7,18 @@ MSSQL_USER = "test_user"
 MSSQL_PASSWORD = "test_password"
 MSSQL_DATABASE = "AdventureWorks2012"
 
-# Connection string for the MSSQL server
-con_str = (
-    f"DRIVER={{ODBC Driver 17 for SQL Server}};"
-    f"SERVER={MSSQL_SERVER};"
-    f"DATABASE={MSSQL_DATABASE};"
-    f"UID={MSSQL_USER};"
-    f"PWD={MSSQL_PASSWORD}"
-)
-
+# Create a connection string for the MSSQL server
+con_str = f"Server={MSSQL_SERVER};Database={MSSQL_DATABASE};User Id={MSSQL_USER};Password={MSSQL_PASSWORD};"
 
 # Fixture for the database connection
 @pytest.fixture(scope="function")
 def db_connection():
-    connection = pyodbc.connect(con_str)
+    connection = pymssql.connect(con_str)
 
     try:
         yield connection
     finally:
         connection.close()
-
 
 # Test function using db_connection fixture
 def test_example_function(db_connection):
@@ -40,3 +32,4 @@ def test_example_function(db_connection):
 
     # Close the cursor
     cursor.close()
+    
