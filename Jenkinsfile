@@ -1,23 +1,15 @@
 pipeline {
-    agent any 
+    agent any
     stages {
-        stage('Build') { 
+        stage('Checkout') {
             steps {
-                echo 'Building the app' 
+                checkout scm
             }
         }
-        stage('Test') { 
-            when {
-                expression { env.BRANCH_NAME == 'dev' }
-            }
+        stage('Run Pytest') {
             steps {
-                echo "The build is running on the branch: ${env.BRANCH_NAME}"
-                echo 'Testing the app' 
-            }
-        }
-        stage('Deploy') { 
-            steps {
-                echo 'Deploying the app'
+                sh 'pip install -r requirements.txt'  // Install project dependencies
+                sh 'pytest'  // Run pytest
             }
         }
     }
