@@ -14,14 +14,18 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                sh '. venv/bin/activate'  // Activate the virtual environment (for non-Bash shells)
-                sh 'pip install -r requirements.txt'  // Install project dependencies within the virtual environment
+                sh '''
+                    . venv/bin/activate
+                    pip install -r requirements.txt
+                   '''
             }
         }
         stage('Run Tests') {
             steps {
-                sh '. venv/bin/activate'  // Activate the virtual environment (for non-Bash shells)
-                sh 'pytest test_adventureworks2012.py'  // Run pytest for the test_adventureworks2012.py file
+                sh '''
+                    . venv/bin/activate
+                    pytest test_adventureworks2012.py
+                   '''
             }
         }
     }
