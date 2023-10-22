@@ -2,7 +2,7 @@ import pytest
 import pymssql
 
 # Server and user information
-MSSQL_SERVER = "EPGETBIW052E"
+MSSQL_SERVER = "EPGETBIW052E,1433"
 MSSQL_USER = "test_user"
 MSSQL_PASSWORD = "test_password"
 MSSQL_DATABASE = "AdventureWorks2012"
