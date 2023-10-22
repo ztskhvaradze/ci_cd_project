@@ -1,5 +1,5 @@
 import pytest
-import pymssql
+import pyodbc
 
 # Server and user information
 MSSQL_SERVER = "host.docker.internal,1433"
@@ -13,7 +13,7 @@ con_str = f"Server={MSSQL_SERVER};Database={MSSQL_DATABASE};User Id={MSSQL_USER}
 # Fixture for the database connection
 @pytest.fixture(scope="function")
 def db_connection():
-    connection = pymssql.connect(con_str)
+    connection = pyodbc.connect(con_str)
 
     try:
         yield connection
