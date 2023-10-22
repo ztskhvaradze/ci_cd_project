@@ -8,7 +8,7 @@ MSSQL_PASSWORD = "test_password"
 MSSQL_DATABASE = "AdventureWorks2012"
 
 # Create a connection string for the MSSQL server
-con_str = f"Server={MSSQL_SERVER};Database={MSSQL_DATABASE};User Id={MSSQL_USER};Password={MSSQL_PASSWORD};"
+con_str = f"Driver={{ODBC Driver 17 for SQL Server}};Server={MSSQL_SERVER};Database={MSSQL_DATABASE};UID={MSSQL_USER};PWD={MSSQL_PASSWORD};"
 
 # Fixture for the database connection
 @pytest.fixture(scope="function")
