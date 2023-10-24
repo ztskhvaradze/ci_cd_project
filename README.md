@@ -49,3 +49,16 @@ Here are the tests included in this project:
 7. `test_unit_measure_unique_names`: Verifies that all UnitMeasure names in the [Production].[UnitMeasure] table are unique.
 
 
+## Branching Strategy
+
+Our project employs a simple two-branch strategy with `dev` and `main` branches to efficiently manage the development process.This strategy is effective for small development teams.
+
+### Justification
+
+1. **Clear separation of development and production:** The `dev` branch is used for ongoing development work, while the `main` branch represents the stable, production-ready code.
+2. **Simplified merging process:** Merging mainly occurs between the `dev` and `main` branches, reducing the complexity and conflicts encountered in multi-branch strategies.
+3. **Ease of use and understanding:** This straightforward strategy is easy to understand and manage for the entire team.
+4. **Improved workflow and collaboration:** Developers can work in parallel on features in the `dev` branch and merge successful changes to the `main` branch, ensuring code goes through a standardized process such as code reviews and testing.
+5. **Flexibility for growth:** If needed, this strategy can be expanded to include additional branches such as `qa` for quality assurance or individual feature branches.
+
+This two-branch strategy provides a clear separation between development and production, an efficient workflow, code quality assurance, and the flexibility to adapt as the project grows.
