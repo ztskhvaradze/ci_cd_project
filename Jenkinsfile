@@ -32,16 +32,16 @@ pipeline {
             steps {
                 script {
                     // Merge the 'dev' branch into the 'main' branch
-                    GITHUB_URL = "https://github.com/ztskhvaradze/ci_cd_project"
+                    GITHUB_URL = "https://github.com/ztskhvaradze/ci_cd_project.git"
                     GITHUB_BRANCH = "main"
                     GITHUB_MERGE_BRANCH = "dev"
 
                     sh(script: """
-                        git config --global user.email "${env.GIT_AUTHOR_EMAIL}"
-                        git config --global user.name "${env.GIT_AUTHOR_NAME}"
+                        git config --global user.email "your-email@example.com"
+                        git config --global user.name "Your Name"
                         git checkout ${GITHUB_BRANCH}
                         git merge ${GITHUB_MERGE_BRANCH}
-                        git push ${GITHUB_URL} ${GITHUB_BRANCH}
+                        git push https://${GITHUB_CREDENTIALS}@${GITHUB_URL} ${GITHUB_BRANCH}
                     """, returnStdout: true)
                 }
             }
